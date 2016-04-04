@@ -1,0 +1,25 @@
+application: [PROJECTID]
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /rest/save
+  script: restapisave.application
+
+- url: /rest/get
+  script: restapiget.application
+
+- url: /admin
+  script: administration.application
+  login: admin
+
+- url: /.*
+  script: default.application
+
+libraries:
+- name: jinja2
+  version: latest
+- name: markupsafe
+  version: latest

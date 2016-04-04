@@ -1,0 +1,7 @@
+// Get all saved working days in a specific month
+
+{
+  "token" : "token_id"
+  "year" : 2015,
+  "month" : 12
+}
