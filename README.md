@@ -34,9 +34,8 @@ in your browser and create a new user.
 You get a new `token` to communicate with the Android App and these Server.
 
 ## JSON Documentation
-The current JSON documentation can be find under `json_documentation/`.
-The documentation to saving a new TimeTrack is described in `save_post`.
-To get all your TimeTrack's read the `get_post` documentation.
+The current JSON documentation can be find in [`documentation/`](documentation).
+The documentation described how to `save_post` and how to `get_post`.
 
 ## TODO:
 * Better naming for objects/* classes
