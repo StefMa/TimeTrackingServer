@@ -32,12 +32,24 @@ class AdminHandler(webapp2.RequestHandler):
       user_db.token = token
       user_db.put()
 
-      self.response.out.write("User erfolgreich registriert:<br>")
-      self.response.out.write("Username: " + username + "<br>")
-      self.response.out.write("Token: " + token)
-      self.response.set_status(200)
+      template_values = {
+        'name' : username,
+        'token' : token
+      }
+
+      template = JINJA_ENVIRONMENT.get_template('/templates/administration_successful.html')
+      self.response.out.write(template.render(template_values))
+
     else:
-      self.redirect("/admin")
+
+      template_values = {
+        'error_message' : 'Something is getting wrong'
+      }
+
+      template = JINJA_ENVIRONMENT.get_template('/templates/administration_error.html')
+      self.response.out.write(template.render(template_values))
+
+    self.response.set_status(200)
 
 application = webapp2.WSGIApplication([
 								('/admin', AdminHandler)

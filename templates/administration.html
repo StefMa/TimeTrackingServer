@@ -1,15 +1,16 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#2980b9">
-  </head>
-  <body>
-    <section>
-      <form action="/admin" method="POST">
-        <input type="text" name="username" id="username">
-        <input type="submit" name="submit" value="User registrieren..." id="submit">
-      </form>
-    </section>
-  </body>
-</html>
+{% extends '/templates/base_administration.html' %}
+
+{% block pagecontent %}
+<form action="/admin" method="POST">
+  <!-- Simple Textfield -->
+  <div class="mdl-textfield mdl-js-textfield">
+    <input class="mdl-textfield__input" type="text" id="username" name="username">
+    <label class="mdl-textfield__label" for="username">Username</label>
+  </div>
+  <br>
+  <!-- Accent-colored raised button with ripple -->
+  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit" id="submit" name="submit">
+    Sign up
+  </button>
+</form>
+{% endblock %}
