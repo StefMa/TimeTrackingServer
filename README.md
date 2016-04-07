@@ -36,8 +36,3 @@ You get a new `token` to communicate with the Android App and these Server.
 ## JSON Documentation
 The current JSON documentation can be find in [`documentation/`](documentation).
 The documentation described how to `save_post` and how to `get_post`.
-
-## TODO:
-* Better naming for objects/* classes
-* nicer default handler (explanation? Redirecting to GitHub page?)
-* GET for /rest/* things same like default handler
