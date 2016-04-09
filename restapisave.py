@@ -37,6 +37,9 @@ class SaveHandler(webapp2.RequestHandler):
     time_track_db.break_time = work.break_time
     time_track_db.put()
 
+  def get(self):
+    self.redirect("/")
+
 application = webapp2.WSGIApplication([
 								('/rest/save', SaveHandler)
                               	], debug=True)

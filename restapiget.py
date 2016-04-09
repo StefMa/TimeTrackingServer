@@ -38,6 +38,9 @@ class GetHandler(webapp2.RequestHandler):
     else:
         self.response.set_status(401)
 
+  def get(self):
+    self.redirect("/")
+
 application = webapp2.WSGIApplication([
 								('/rest/get', GetHandler)
                               	], debug=True)

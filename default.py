@@ -6,6 +6,8 @@ class MainHandler(webapp2.RequestHandler):
 
     self.response.out.write("Hello World \o/")
 
+    self.response.set_status(200)
+
 application = webapp2.WSGIApplication([
 								('/', MainHandler),
 								('/.*', MainHandler)
