@@ -4,9 +4,7 @@ import webapp2
 class MainHandler(webapp2.RequestHandler):
   def get(self):
 
-    self.response.out.write("Hello World \o/")
-
-    self.response.set_status(200)
+    self.redirect("http://stefma.github.io/TimeTracking/")
 
 application = webapp2.WSGIApplication([
 								('/', MainHandler),
