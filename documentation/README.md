@@ -31,4 +31,5 @@
       "break_time" : false
     }
   ]
+}
 ```
