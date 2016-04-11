@@ -18,28 +18,17 @@
     "month" : 12,
     "day" : 24
   },
-  "double_working" : true,
-  "first_work" : {
-    "start_time" : {
-      "hour" : 5,
-      "minute" : 15
-    },
-    "end_time" : {
-      "hour" : 10,
-      "minute" : 30
-    },
-    "break_time" : false
-  },
-  "second_work" : {
-    "start_time" : {
-        "hour" : 16,
+  "work" : [
+    {
+      "start_time" : {
+        "hour" : 5,
+        "minute" : 15
+      },
+      "end_time" : {
+        "hour" : 10,
         "minute" : 30
-    },
-    "end_time" : {
-      "hour" : 20,
-      "minute" : 00
-    },
-    "break_time" : false
-  }
-}
+      },
+      "break_time" : false
+    }
+  ]
 ```
