@@ -30,11 +30,25 @@ class GetHandler(webapp2.RequestHandler):
         query = 'SELECT * FROM TimeTrack WHERE day >= DATE(:1,:2,1) AND day <= DATE(:1,:2,:3) AND token = \'' + token + '\''
         logging.info(query)
         time_track_db = db.GqlQuery(query, year, month, last_day_in_month)
+        response = None
+        if time_track_db.count() >= 1:
+            response = '{ "working_month" : { "year" : ' + str(year) + ', "month" : ' + str(month) + ' }, work ['
         for track in time_track_db:
-            logging.info(str(track.day))
-            self.response.out.write(str(track.day) + "<hr>")
+            response += '{'
+            response += '"working_day" : { "year" : ' + str(track.day.year) + ', "month" : ' + str(track.day.month) + ', "day" : ' + str(track.day.day) + ' },'
+            response += '"start_time" : { "hour" : ' + str(track.start_time.hour) + ', "minute" : ' + str(track.start_time.minute) + ' },'
+            response += '"end_time" : { "hour" : ' + str(track.end_time.hour) + ', "minute" : ' + str(track.end_time.minute) + ' },'
+            response += '"break_time" : ' + str(track.break_time)
+            response += '},'
 
-        self.response.set_status(200)
+        if response is not None:
+            response = response[:-1]
+            response += '] }'
+            logging.info(json.dumps(response))
+            self.response.out.write(json.dumps(response))
+            self.response.set_status(200)
+        else:
+            self.response.set_status(404)
     else:
         self.response.set_status(401)
 
