@@ -14,7 +14,8 @@ Get all working days in a month.
   "month" : 12
 }
 ```
-**Successfully response:**
+**Response:**
+
 ```
 {
   "working_month" : {
@@ -57,6 +58,7 @@ Get all working days in a month.
   ]
 }
 ```
+> **Note:** You will get always your working_month back. But work should be empty or null
 
 # Save a working day
 
