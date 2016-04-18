@@ -30,25 +30,27 @@ class GetHandler(webapp2.RequestHandler):
         query = 'SELECT * FROM TimeTrack WHERE day >= DATE(:1,:2,1) AND day <= DATE(:1,:2,:3) AND token = \'' + token + '\''
         logging.info(query)
         time_track_db = db.GqlQuery(query, year, month, last_day_in_month)
-        response = None
-        if time_track_db.count() >= 1:
-            response = '{ "working_month" : { "year" : ' + str(year) + ', "month" : ' + str(month) + ' }, work ['
+        response_working = {}
+        response_day = working_day(year, month, None)
+        response_working["working_month"] = response_day.__dict__
+        response_work_list = []
         for track in time_track_db:
-            response += '{'
-            response += '"working_day" : { "year" : ' + str(track.day.year) + ', "month" : ' + str(track.day.month) + ', "day" : ' + str(track.day.day) + ' },'
-            response += '"start_time" : { "hour" : ' + str(track.start_time.hour) + ', "minute" : ' + str(track.start_time.minute) + ' },'
-            response += '"end_time" : { "hour" : ' + str(track.end_time.hour) + ', "minute" : ' + str(track.end_time.minute) + ' },'
-            response += '"break_time" : ' + str(track.break_time)
-            response += '},'
-
-        if response is not None:
-            response = response[:-1]
-            response += '] }'
-            logging.info(json.dumps(response))
-            self.response.out.write(json.dumps(response))
-            self.response.set_status(200)
-        else:
-            self.response.set_status(404)
+            response_work_day = working_day(track.day.year, track.day.month, track.day.day)
+            reponse_work_start_time = my_time(track.start_time.hour, track.start_time.minute)
+            reponse_work_end_time = my_time(track.end_time.hour, track.end_time.minute)
+            response_track = {
+                "working_day" : response_work_day.__dict__,
+                "start_time" : reponse_work_start_time.__dict__,
+                "end_time" : reponse_work_end_time.__dict__,
+                "break_time" : track.break_time
+            }
+            response_work_list.append(response_track)
+            
+        response_working["work"] = response_work_list
+        logging.info(json.dumps(response_working))
+        self.response.headers['Content-Type'] = 'application/json'
+        self.response.out.write(json.dumps(response_working))
+        self.response.set_status(200)
     else:
         self.response.set_status(401)
 
