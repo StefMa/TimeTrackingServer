@@ -27,7 +27,22 @@ class SaveHandler(webapp2.RequestHandler):
         self.response.set_status(401)
 
   def save_time_track(self, working):
-    time_track_day_db = TimeTrackDay()
+    query = TimeTrackDay.all()
+    query = query.filter('day =',  datetime.datetime(working.working_day.year, working.working_day.month, working.working_day.day))
+    result = query.get()
+    if result is None:
+        self.save_time_tracks_in_db(working, TimeTrackDay())
+    else:
+        self.delete_old_time_tracks(result.key())
+        self.save_time_tracks_in_db(working, TimeTrackDay(key=result.key()))
+
+  def delete_old_time_tracks(self, key):
+    time_track_db = TimeTrack.all()
+    time_track_db = time_track_db.ancestor(key)
+    for time_track in time_track_db:
+      time_track.delete()
+
+  def save_time_tracks_in_db(self, working, time_track_day_db):
     time_track_day_db.token = working.token
     time_track_day_db.day = datetime.date(year=working.working_day.year, month=working.working_day.month, day=working.working_day.day)
     time_track_day_db.put()
