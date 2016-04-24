@@ -1,6 +1,6 @@
 indexes:
 
-- kind: TimeTrack
+- kind: TimeTrackDay
   properties:
   - name: token
   - name: day

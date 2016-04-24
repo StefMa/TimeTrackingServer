@@ -1,6 +1,6 @@
 # Get working days
 
-Get all working days in a month.
+Get all working days in a month sort by day.
 
 **Route:**
 ```
@@ -29,31 +29,19 @@ Get all working days in a month.
           "month" : 12,
           "day" : 3
         },
-        "start_time" : {
-          "hour" : 5,
-          "minute" : 15
-        },
-        "end_time" : {
-          "hour" : 10,
-          "minute" : 30
-        },
-        "break_time" : false
-      },
-      {
-        "working_day" : {
-          "year" : 2015,
-          "month" : 12,
-          "day" : 3
-        },
-        "start_time" : {
-          "hour" : 16,
-          "minute" : 30
-        },
-        "end_time" : {
-          "hour" : 20,
-          "minute" : 0
-        },
-        "break_time" : true
+        "work_in_day" : [        
+          {
+            "start_time" : {
+              "hour" : 5,
+              "minute" : 15
+            },
+            "end_time" : {
+              "hour" : 10,
+              "minute" : 30
+            },
+            "break_time" : false
+          }
+        ]
       }
   ]
 }

@@ -9,6 +9,7 @@ from objects.working import working
 from tokenhelper import token_helper
 
 from google.appengine.ext import db
+from databases import TimeTrackDay
 from databases import TimeTrack
 
 class SaveHandler(webapp2.RequestHandler):
@@ -26,14 +27,14 @@ class SaveHandler(webapp2.RequestHandler):
         self.response.set_status(401)
 
   def save_time_track(self, working):
+    time_track_day_db = TimeTrackDay()
+    time_track_day_db.token = working.token
+    time_track_day_db.day = datetime.date(year=working.working_day.year, month=working.working_day.month, day=working.working_day.day)
+    time_track_day_db.put()
     for index in range(0, len(working.work_list)):
-        token = working.token
-        working_day = working.working_day
         work = working.work_list[index]
 
-        time_track_db = TimeTrack()
-        time_track_db.token = token
-        time_track_db.day = datetime.date(year=working_day.year, month=working_day.month, day=working_day.day)
+        time_track_db = TimeTrack(parent=time_track_day_db)
         time_track_db.start_time = datetime.time(hour=work.start_time.hour, minute=work.start_time.minute)
         time_track_db.end_time = datetime.time(hour=work.end_time.hour, minute=work.end_time.minute)
         time_track_db.break_time = work.break_time
