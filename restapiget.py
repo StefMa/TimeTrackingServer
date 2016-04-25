@@ -38,8 +38,7 @@ class GetHandler(webapp2.RequestHandler):
             response_working_each_day = {}
             response_work_day = working_day(track_day.day.year, track_day.day.month, track_day.day.day)
             response_working_each_day["working_day"] = response_work_day.__dict__
-            time_track_db = TimeTrack.all()
-            time_track_db = time_track_db.ancestor(track_day.key())
+            time_track_db = TimeTrack.all().ancestor(track_day.key()).order('start_time')
             response_work_each_day_list = []
             for track in time_track_db:
                 reponse_work_start_time = my_time(track.start_time.hour, track.start_time.minute)

@@ -4,3 +4,8 @@ indexes:
   properties:
   - name: token
   - name: day
+
+- kind: TimeTrack
+  ancestor: yes
+  properties:
+  - name: start_time
