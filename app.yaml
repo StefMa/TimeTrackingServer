@@ -11,6 +11,9 @@ handlers:
 - url: /rest/get
   script: restapiget.application
 
+- url: /rest/delete
+  script: restapidelete.application
+
 - url: /admin
   script: administration.application
   login: admin
