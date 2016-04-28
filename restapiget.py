@@ -10,6 +10,7 @@ from objects.work import work
 from objects.mytime import my_time
 
 from tokenhelper import token_helper
+from header_helper import header_helper
 
 from google.appengine.ext import db
 from databases import TimeTrackDay
@@ -23,7 +24,8 @@ class GetHandler(webapp2.RequestHandler):
 
     token = json_string["token"]
     t_helper = token_helper(token)
-    if t_helper.valid_token:
+    h_helper = header_helper(self.request.headers)
+    if t_helper.valid_token and h_helper.valid_auth() and h_helper.valid_api_version() == "1":
         year = json_string['year']
         month = json_string['month']
         last_day_in_month = calendar.monthrange(year,month)[1]
