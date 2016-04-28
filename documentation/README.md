@@ -82,3 +82,23 @@ Save a working day:
   ]
 }
 ```
+
+# Delete a working day
+
+Delete a working day and all of its saved time tracks:
+
+**Route:**
+```
+/rest/delete
+```
+**Body:**
+```
+{
+  "token" : "token_id"
+  "working_day" : {
+    "year" : 2015,
+    "month" : 12,
+    "day" : 24
+  }
+}
+```
