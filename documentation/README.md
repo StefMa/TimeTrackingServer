@@ -31,6 +31,7 @@ Get all working days in a month sort by day.
         },
         "work_in_day" : [        
           {
+            "name" : "Early shift"
             "start_time" : {
               "hour" : 5,
               "minute" : 15
@@ -67,6 +68,7 @@ Save a working day:
   },
   "work" : [
     {
+      "name" : "Early shift"
       "start_time" : {
         "hour" : 5,
         "minute" : 15

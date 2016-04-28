@@ -52,6 +52,7 @@ class SaveHandler(webapp2.RequestHandler):
         work = working.work_list[index]
 
         time_track_db = TimeTrack(parent=time_track_day_db)
+        time_track_db.name = work.name
         time_track_db.start_time = datetime.time(hour=work.start_time.hour, minute=work.start_time.minute)
         time_track_db.end_time = datetime.time(hour=work.end_time.hour, minute=work.end_time.minute)
         time_track_db.break_time = work.break_time

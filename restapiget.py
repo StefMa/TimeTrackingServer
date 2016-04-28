@@ -46,6 +46,7 @@ class GetHandler(webapp2.RequestHandler):
                 reponse_work_start_time = my_time(track.start_time.hour, track.start_time.minute)
                 reponse_work_end_time = my_time(track.end_time.hour, track.end_time.minute)
                 response_track = {
+                    "name" : track.name,
                     "start_time" : reponse_work_start_time.__dict__,
                     "end_time" : reponse_work_end_time.__dict__,
                     "break_time" : track.break_time

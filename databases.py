@@ -5,6 +5,7 @@ class TimeTrackDay(db.Model):
   day = db.DateProperty()
   
 class TimeTrack(db.Model):
+  name = db.StringProperty()
   start_time = db.TimeProperty()
   end_time = db.TimeProperty()
   break_time = db.BooleanProperty()
