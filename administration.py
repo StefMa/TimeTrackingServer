@@ -3,10 +3,11 @@ import webapp2
 import logging
 import jinja2
 import os
-import binascii
 
 from google.appengine.ext import db
 from databases import User
+
+from create_user_utils import user_util
 
 JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -22,16 +23,9 @@ class AdminHandler(webapp2.RequestHandler):
 
   def post(self):
     username = self.request.get("username")
+    token = user_util.create_user(username)
 
-    user = db.GqlQuery("SELECT * FROM User where username = '" + username + "'").get()
-    if user is None:
-      token = binascii.hexlify(os.urandom(18))
-
-      user_db = User()
-      user_db.username = username
-      user_db.token = token
-      user_db.put()
-
+    if token is not None:
       template_values = {
         'name' : username,
         'token' : token
@@ -41,7 +35,6 @@ class AdminHandler(webapp2.RequestHandler):
       self.response.out.write(template.render(template_values))
 
     else:
-
       template_values = {
         'error_message' : 'Something is getting wrong'
       }

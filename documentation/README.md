@@ -15,7 +15,6 @@ Get all working days in a month sort by day.
 }
 ```
 **Response:**
-
 ```
 {
   "working_month" : {
@@ -100,5 +99,28 @@ Delete a working day and all of its saved time tracks:
     "month" : 12,
     "day" : 24
   }
+}
+```
+
+# Create a user
+
+Create a new user and get a token:
+
+**Route:**
+```
+/rest/create
+```
+**Body:**
+```
+{
+  "username" : "John Doe"
+}
+```
+**Response:**
+```
+{
+  "username" : "John Doe",
+  "result" : "Ok|Already exist",
+  "token" : "1234567890abc"
 }
 ```
