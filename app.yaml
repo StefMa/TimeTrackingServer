@@ -17,6 +17,12 @@ handlers:
 - url: /rest/create
   script: restapicreate.application
 
+- url: /rest/settings/update
+  script: restapisettings.application
+
+- url: /rest/settings/get
+  script: restapisettings.application
+
 - url: /admin
   script: administration.application
   login: admin

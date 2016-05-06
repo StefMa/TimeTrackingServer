@@ -13,3 +13,7 @@ class TimeTrack(db.Model):
 class User(db.Model):
   username = db.StringProperty()
   token = db.StringProperty()
+
+class Settings(db.Model):
+  token = db.StringProperty()
+  default_worktime = db.FloatProperty()
