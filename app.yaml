@@ -5,16 +5,16 @@ api_version: 1
 threadsafe: true
 
 handlers:
-- url: /rest/save
+- url: /rest/work/save
   script: restapisave.application
 
-- url: /rest/get
+- url: /rest/work/get
   script: restapiget.application
 
-- url: /rest/delete
+- url: /rest/work/delete
   script: restapidelete.application
 
-- url: /rest/create
+- url: /rest/user/create
   script: restapicreate.application
 
 - url: /rest/settings/update

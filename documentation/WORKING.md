@@ -4,7 +4,7 @@ Get all working days in a month sort by day.
 
 **Route:**
 ```
-/rest/get
+/rest/work/get
 ```
 **Body:**
 ```
@@ -54,7 +54,7 @@ Save a working day:
 
 **Route:**
 ```
-/rest/save
+/rest/work/save
 ```
 **Body:**
 ```
@@ -88,7 +88,7 @@ Delete a working day and all of its saved time tracks:
 
 **Route:**
 ```
-/rest/delete
+/rest/work/delete
 ```
 **Body:**
 ```

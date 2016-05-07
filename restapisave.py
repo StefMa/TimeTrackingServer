@@ -62,5 +62,5 @@ class SaveHandler(webapp2.RequestHandler):
     self.redirect("/")
 
 application = webapp2.WSGIApplication([
-								('/rest/save', SaveHandler)
+								('/rest/work/save', SaveHandler)
                               	], debug=True)

@@ -4,7 +4,7 @@ Create a new user and get a token:
 
 **Route:**
 ```
-/rest/create
+/rest/user/create
 ```
 **Body:**
 ```

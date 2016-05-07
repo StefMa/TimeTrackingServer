@@ -67,5 +67,5 @@ class GetHandler(webapp2.RequestHandler):
     self.redirect("/")
 
 application = webapp2.WSGIApplication([
-								('/rest/get', GetHandler)
+								('/rest/work/get', GetHandler)
                               	], debug=True)

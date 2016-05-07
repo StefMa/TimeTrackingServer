@@ -44,5 +44,5 @@ class DeleteHandler(webapp2.RequestHandler):
     self.redirect("/")
 
 application = webapp2.WSGIApplication([
-								('/rest/delete', DeleteHandler)
+								('/rest/work/delete', DeleteHandler)
                               	], debug=True)
