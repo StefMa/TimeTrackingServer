@@ -7,7 +7,7 @@ import os
 from google.appengine.ext import db
 from databases import User
 
-from create_user_utils import user_util
+from utils.create_user_utils import user_util
 
 JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),

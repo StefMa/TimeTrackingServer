@@ -9,8 +9,8 @@ from objects.workingday import working_day
 from objects.work import work
 from objects.mytime import my_time
 
-from tokenhelper import token_helper
-from header_helper import header_helper
+from utils.token_helper import token_helper
+from utils.header_helper import header_helper
 
 from google.appengine.ext import db
 from databases import TimeTrackDay

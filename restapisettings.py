@@ -3,8 +3,8 @@ import webapp2
 import json
 import logging
 
-from tokenhelper import token_helper
-from header_helper import header_helper
+from utils.token_helper import token_helper
+from utils.header_helper import header_helper
 
 from google.appengine.ext import db
 from databases import Settings
