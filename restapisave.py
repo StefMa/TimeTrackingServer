@@ -6,8 +6,7 @@ import logging
 
 from objects.working import working
 
-from utils.token_helper import token_helper
-from utils.header_helper import header_helper
+from utils.valid_request_util import check
 
 from google.appengine.ext import db
 from databases import TimeTrackDay
@@ -20,9 +19,8 @@ class SaveHandler(webapp2.RequestHandler):
     logging.info(json_string)
     work = working.create_from_json(json_string)
 
-    t_helper = token_helper(work.token)
-    h_helper = header_helper(self.request.headers)
-    if t_helper.valid_token and h_helper.valid_auth() and h_helper.valid_api_version() == "1":
+    token = work.token
+    if check.token_and_headers(token, self.request.headers):
         self.save_time_track(work)
         self.response.set_status(200)
     else:

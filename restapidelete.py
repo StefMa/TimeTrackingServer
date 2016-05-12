@@ -9,8 +9,7 @@ from objects.workingday import working_day
 from objects.work import work
 from objects.mytime import my_time
 
-from utils.token_helper import token_helper
-from utils.header_helper import header_helper
+from utils.valid_request_util import check
 
 from google.appengine.ext import db
 from databases import TimeTrackDay
@@ -23,9 +22,7 @@ class DeleteHandler(webapp2.RequestHandler):
     logging.info(json_string)
 
     token = json_string["token"]
-    t_helper = token_helper(token)
-    h_helper = header_helper(self.request.headers)
-    if t_helper.valid_token and h_helper.valid_auth() and h_helper.valid_api_version() == "1":
+    if check.token_and_headers(token, self.request.headers):
         work_day = working_day(json_string['working_day']['year'], json_string['working_day']['month'], json_string['working_day']['day'])
 
         query = 'SELECT * FROM TimeTrackDay WHERE day = DATE(:1,:2,:3) AND token = \'' + token + '\''

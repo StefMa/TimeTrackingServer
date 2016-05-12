@@ -3,8 +3,7 @@ import webapp2
 import json
 import logging
 
-from utils.token_helper import token_helper
-from utils.header_helper import header_helper
+from utils.valid_request_util import check
 
 from google.appengine.ext import db
 from databases import Settings
@@ -16,9 +15,7 @@ class UpdateSettingsHandler(webapp2.RequestHandler):
     logging.info(json_string)
 
     token = json_string["token"]
-    t_helper = token_helper(token)
-    h_helper = header_helper(self.request.headers)
-    if t_helper.valid_token and h_helper.valid_auth() and h_helper.valid_api_version() == "1":
+    if check.token_and_headers(token, self.request.headers):
         default_worktime = json_string["settings"]["default_worktime"]
 
         settings_db = Settings.all().filter("token =", token)
@@ -45,9 +42,7 @@ class GetSettingsHandler(webapp2.RequestHandler):
     logging.info(json_string)
 
     token = json_string["token"]
-    t_helper = token_helper(token)
-    h_helper = header_helper(self.request.headers)
-    if t_helper.valid_token and h_helper.valid_auth() and h_helper.valid_api_version() == "1":
+    if check.token_and_headers(token, self.request.headers):
         settings_db = Settings.all().filter("token =", token)
         setting = settings_db.get()
         result = {}

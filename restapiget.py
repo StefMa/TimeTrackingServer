@@ -9,7 +9,7 @@ from objects.workingday import working_day
 from objects.work import work
 from objects.mytime import my_time
 
-from utils.token_helper import token_helper
+from utils.valid_request_util import check
 from utils.header_helper import header_helper
 
 from google.appengine.ext import db
@@ -23,9 +23,7 @@ class GetHandler(webapp2.RequestHandler):
     logging.info(json_string)
 
     token = json_string["token"]
-    t_helper = token_helper(token)
-    h_helper = header_helper(self.request.headers)
-    if t_helper.valid_token and h_helper.valid_auth() and h_helper.valid_api_version() == "1":
+    if check.token_and_headers(token, self.request.headers):
         year = json_string['year']
         month = json_string['month']
         last_day_in_month = calendar.monthrange(year,month)[1]
