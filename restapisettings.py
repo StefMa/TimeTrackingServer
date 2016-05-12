@@ -59,6 +59,6 @@ class GetSettingsHandler(webapp2.RequestHandler):
     self.redirect("/")
 
 application = webapp2.WSGIApplication([
-								('/rest/settings/update', UpdateSettingsHandler),
-                                ('/rest/settings/get', GetSettingsHandler),
+								('/rest/user/settings/update', UpdateSettingsHandler),
+                                ('/rest/user/settings/get', GetSettingsHandler),
                               	], debug=True)
