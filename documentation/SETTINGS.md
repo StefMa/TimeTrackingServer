@@ -4,7 +4,7 @@ Update settings (or create if not exists jet):
 
 **Route:**
 ```
-/rest/settings/update
+/rest/user/settings/update
 ```
 **Body:**
 ```
@@ -22,7 +22,7 @@ Update settings (or create if not exists jet):
 
 **Route:**
 ```
-/rest/settings/get
+/rest/user/settings/get
 ```
 **Body:**
 ```
