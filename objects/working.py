@@ -23,6 +23,8 @@ class working():
         start_time = my_time(work_object_as_tuble["start_time"]["hour"], work_object_as_tuble["start_time"]["minute"])
         end_time = my_time(work_object_as_tuble["end_time"]["hour"], work_object_as_tuble["end_time"]["minute"])
         break_time = work_object_as_tuble["break_time"]
+        illness = work_object_as_tuble["illness"]
+        vacation = work_object_as_tuble["vacation"]
 
-        my_work = work(name, start_time, end_time, break_time)
+        my_work = work(name, start_time, end_time, break_time, illness, vacation)
         return my_work

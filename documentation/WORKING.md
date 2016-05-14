@@ -39,7 +39,9 @@ Get all working days in a month sort by day.
               "hour" : 10,
               "minute" : 30
             },
-            "break_time" : false
+            "break_time" : false,
+            "illness" : false,
+            "vacation" : false
           }
         ]
       }
@@ -76,11 +78,14 @@ Save a working day:
         "hour" : 10,
         "minute" : 30
       },
-      "break_time" : false
+      "break_time" : false,
+      "illness" : false,
+      "vacation" : false
     }
   ]
 }
 ```
+> **Note:**: If illness or vacation is set. end_time and start_time have a zero hour and minute.
 
 # Delete a working day
 

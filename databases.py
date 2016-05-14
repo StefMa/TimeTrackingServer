@@ -3,12 +3,14 @@ from google.appengine.ext import db
 class TimeTrackDay(db.Model):
   token = db.StringProperty()
   day = db.DateProperty()
-  
+
 class TimeTrack(db.Model):
   name = db.StringProperty()
   start_time = db.TimeProperty()
   end_time = db.TimeProperty()
   break_time = db.BooleanProperty()
+  illness = db.BooleanProperty()
+  vacation = db.BooleanProperty()
 
 class User(db.Model):
   username = db.StringProperty()

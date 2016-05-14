@@ -54,6 +54,8 @@ class SaveHandler(webapp2.RequestHandler):
         time_track_db.start_time = datetime.time(hour=work.start_time.hour, minute=work.start_time.minute)
         time_track_db.end_time = datetime.time(hour=work.end_time.hour, minute=work.end_time.minute)
         time_track_db.break_time = work.break_time
+        time_track_db.illness = work.illness
+        time_track_db.vacation = work.vacation
         time_track_db.put()
 
   def get(self):
