@@ -1,6 +1,6 @@
 # Documentation
 
-Explore the APIs:
+## Explore the APIs:
 * [Working](WORKING.md)
 
 > How to save and get working days is described here
@@ -12,3 +12,8 @@ Explore the APIs:
 * [Settings](SETTINGS.md)
 
 > The settings APIs
+
+## Version and Namespace
+* [Server Version and Namespace](VERSION_NAMESPACE.md)
+
+> Read about the different versions and namespaces

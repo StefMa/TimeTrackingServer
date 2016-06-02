@@ -33,6 +33,5 @@ YOUR_APP_ENGINE_PROJECT_ID.appspot.com/admin
 in your browser and create a new user.
 You get a new `token` to communicate with the Android App and these Server.
 
-## JSON Documentation
-The current JSON documentation can be find in [`documentation/`](documentation).
-The documentation described how to `save_post` and how to `get_post`.
+## Documentation
+The current documentation can be find in [`documentation/`](documentation).
