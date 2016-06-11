@@ -20,3 +20,26 @@ Create a new user and get a token:
   "token" : "1234567890abc"
 }
 ```
+
+# User login
+
+To log in a existing user:
+
+**Route:**
+```
+/rest/user/login
+```
+**Body:**
+```
+{
+  "token" : "1234567890abc"
+}
+```
+**Response:**
+```
+{
+  "username" : "John Doe",
+  "result" : "Ok|Token not exist",
+  "token" : "1234567890abc"
+}
+```

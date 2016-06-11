@@ -17,6 +17,9 @@ handlers:
 - url: /rest/user/create
   script: restapicreate.application
 
+- url: /rest/user/login
+  script: restapilogin.application
+
 - url: /rest/user/settings/update
   script: restapisettings.application
 
