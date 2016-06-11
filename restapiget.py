@@ -47,7 +47,6 @@ class GetHandler(webapp2.RequestHandler):
                     "name" : track.name,
                     "start_time" : reponse_work_start_time.__dict__,
                     "end_time" : reponse_work_end_time.__dict__,
-                    "break_time" : track.break_time,
                     "illness" : track.illness,
                     "vacation" : track.vacation
                 }
